@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"go.uber.org/fx"
+	"go.uber.org/zap"
 )
 
 func main() {
@@ -12,6 +13,7 @@ func main() {
 			NewHTTPServer,
 			NewServeMux,
 			NewEchoHandler,
+			zap.NewExample,
 		),
 		fx.Invoke(func(*http.Server) {}),
 	).Run()
